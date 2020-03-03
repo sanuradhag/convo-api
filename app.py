@@ -5,6 +5,7 @@ from flask_cors import CORS
 
 from mock_data import model
 from file_util import allowed_file
+from interaction_model_generator import InteractionModelGenerator
 
 app = Flask(__name__)
 CORS(app)
@@ -41,6 +42,10 @@ def upload_file():
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        extractor = InteractionModelGenerator(UPLOAD_FOLDER, filename)
+        extractor.generate()
+
+
         resp = jsonify({'message': 'File successfully uploaded', 'data': model})
         resp.status_code = 201
         return resp
