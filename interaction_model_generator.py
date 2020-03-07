@@ -52,15 +52,27 @@ class InteractionModelGenerator:
                 if (method == 'post') | (method == 'put'):
                     summary = current_method['summary']
                     operation_id = current_method['operationId']
-                    request_body = current_method['requestBody']
-                    content = request_body['content']
-                    if 'application/json' in content:
-                        schema_name = current_method['requestBody']['content']['application/json']['schema']['$ref'].split('/')[-1]
-                        self.generate_intents(schema_name, operation_id)
+                    if 'requestBody' in current_method:
+                        request_body = current_method['requestBody']
+                        content = request_body['content']
+                        if 'application/json' in content:
+                            schema_name = \
+                                current_method['requestBody']['content']['application/json']['schema']['$ref'].split(
+                                    '/')[
+                                    -1]
+                            self.generate_intents(schema_name, operation_id)
         print('spec_intents', self.spec_intents)
         print('\n')
-        self.intraction_model["interactionModel"]["languageModel"]["intents"] = self.intraction_model["interactionModel"]["languageModel"]["intents"] + self.spec_intents
+
+        # set generated intents
+        self.intraction_model["interactionModel"]["languageModel"]["intents"] = \
+            self.intraction_model["interactionModel"]["languageModel"]["intents"] + self.spec_intents
+
+        # set invocation name
+        self.intraction_model["interactionModel"]["languageModel"]["invocationName"] = self.parsed_json['info']['title']
+
         print('interaction_model', self.intraction_model)
+        return self.intraction_model
 
     def open_spec_file(self):
         path_to_file = self.path + '/' + self.filename
@@ -69,29 +81,34 @@ class InteractionModelGenerator:
                 data = json.load(f)
                 self.parsed_json = data
                 self.jsn_str = json.dumps(data, indent=4)
-        except IOError:
+        except json.decoder.JSONDecodeError as e:
             print("Error occurred while opening the spec file")
+            print(e)
 
     def generate_intents(self, schema_name, intent_name):
-        slots = [];
+        slots = []
         components = self.parsed_json['components']
         schemas = components["schemas"]
         current_schema = schemas[schema_name]
         props = current_schema['properties']
         for prop in props:
             current_prop = props[prop]
-            if ('type' in current_prop) & ('format' in current_prop):
+            if 'type' in current_prop:
                 type = current_prop['type']
-                # frmt = current_prop['format']
                 slot = self.map_to_slot_type(type)
-                slots.append(slot)
-        # print('spec_slots', slots)
-        self.spec_intents.append({"name": intent_name, "slots": slots})
-        # print('spec_intents', self.spec_intents)
-
+                if slot is not None:
+                    slots.append(slot)
+        # slots = list(dict.fromkeys(slots))
+        slots = self.remove_duplicates(slots)
+        self.spec_intents.append({"name": intent_name, "slots": slots, "samples": []})
 
     def map_to_slot_type(self, t):
         if (t == "integer") | (t == "number"):
             return {"name": "number", "type": "AMAZON.NUMBER"}
         elif t == "string":
             return {"name": "string", "type": "AMAZON.Ordinal"}
+        else:
+            return None
+
+    def remove_duplicates(self, list):
+        return [dict(t) for t in {tuple(d.items()) for d in list}]

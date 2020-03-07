@@ -43,10 +43,10 @@ def upload_file():
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         extractor = InteractionModelGenerator(UPLOAD_FOLDER, filename)
-        extractor.generate()
+        interaction_model = extractor.generate()
 
 
-        resp = jsonify({'message': 'File successfully uploaded', 'data': model})
+        resp = jsonify({'message': 'File successfully uploaded', 'data': interaction_model})
         resp.status_code = 201
         return resp
     else:
