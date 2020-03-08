@@ -60,7 +60,20 @@ class InteractionModelGenerator:
                                 current_method['requestBody']['content']['application/json']['schema']['$ref'].split(
                                     '/')[
                                     -1]
-                            self.generate_intents(schema_name, operation_id)
+                            self.generate_intents_for_post_and_put(schema_name, operation_id, summary)
+
+                if (method == 'delete') | (method == 'get'):
+                    summary = current_method['summary']
+                    operation_id = current_method['operationId']
+                    delete_slots = []
+                    if 'parameters' in current_method:
+                        if len(current_method['parameters']) != 0:
+                            for param in current_method['parameters']:
+                                name = param['name']
+                                type = param['schema']['type']
+                                slot = self.map_to_slot_type(type, name)
+                                delete_slots.append(slot)
+                    self.generate_intents_for_get_and_delete(operation_id, delete_slots, summary)
         print('spec_intents', self.spec_intents)
         print('\n')
 
@@ -85,7 +98,7 @@ class InteractionModelGenerator:
             print("Error occurred while opening the spec file")
             print(e)
 
-    def generate_intents(self, schema_name, intent_name):
+    def generate_intents_for_post_and_put(self, schema_name, intent_name, summary):
         slots = []
         components = self.parsed_json['components']
         schemas = components["schemas"]
@@ -95,18 +108,25 @@ class InteractionModelGenerator:
             current_prop = props[prop]
             if 'type' in current_prop:
                 type = current_prop['type']
-                slot = self.map_to_slot_type(type)
+                slot = self.map_to_slot_type(type, prop)
                 if slot is not None:
                     slots.append(slot)
         # slots = list(dict.fromkeys(slots))
         slots = self.remove_duplicates(slots)
-        self.spec_intents.append({"name": intent_name, "slots": slots, "samples": []})
+        self.spec_intents.append({"name": intent_name, "slots": slots, "samples": [summary]})
 
-    def map_to_slot_type(self, t):
+    def generate_intents_for_get_and_delete(self, intent_name, slots, summary):
+        sl = []
+        for s in slots:
+            if s is not None:
+                sl.append(s)
+        self.spec_intents.append({"name": intent_name, "slots": sl, "samples": [summary]})
+
+    def map_to_slot_type(self, t, n):
         if (t == "integer") | (t == "number"):
-            return {"name": "number", "type": "AMAZON.NUMBER"}
+            return {"name": n, "type": "AMAZON.NUMBER"}
         elif t == "string":
-            return {"name": "string", "type": "AMAZON.Ordinal"}
+            return {"name": n, "type": "AMAZON.Ordinal"}
         else:
             return None
 
