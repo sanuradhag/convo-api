@@ -113,14 +113,16 @@ class InteractionModelGenerator:
                     slots.append(slot)
         # slots = list(dict.fromkeys(slots))
         slots = self.remove_duplicates(slots)
-        self.spec_intents.append({"name": intent_name, "slots": slots, "samples": [summary]})
+        if len(slots) != 0:
+            self.spec_intents.append({"name": intent_name, "slots": slots, "samples": [summary]})
 
     def generate_intents_for_get_and_delete(self, intent_name, slots, summary):
         sl = []
         for s in slots:
             if s is not None:
                 sl.append(s)
-        self.spec_intents.append({"name": intent_name, "slots": sl, "samples": [summary]})
+        if len(sl) != 0:
+            self.spec_intents.append({"name": intent_name, "slots": sl, "samples": [summary]})
 
     def map_to_slot_type(self, t, n):
         if (t == "integer") | (t == "number"):
