@@ -10,15 +10,15 @@ TRAIN_SIZE = 53000
 TEST_SIZE = 3000
 VALID_SET_SIZE_RATIO = 0.1
 
-dataset_path = '/Users/anuradha/Documents/IIT/5th year/Research/implementation/api/convo-api/src/paraphraser/dataset/quora_duplicate_questions.tsv'
-emb_path = '/Users/anuradha/Documents/IIT/5th year/Research/implementation/api/convo-api/src/paraphraser/dataset/pretrained_word_embeddings/glove_50.npy'
-emb_info_path = '/Users/anuradha/Documents/IIT/5th year/Research/implementation/api/convo-api/src/paraphraser/dataset/pretrained_word_embeddings/glove_50_info.pkl'
+dataset_path = '/Users/anuradha/Desktop/convo-api/src/paraphraser/dataset/quora_duplicate_questions.tsv'
+emb_path = '//Users/anuradha/Desktop/convo-api/src/paraphraser/dataset/pretrained_word_embeddings/glove_50.npy'
+emb_info_path = '/Users/anuradha/Desktop/convo-api/src/paraphraser/dataset/pretrained_word_embeddings/glove_50_info.pkl'
 
-gen_model_path = '/Users/anuradha/Documents/IIT/5th year/Research/implementation/api/convo-api/src/paraphraser/model/gen.trc'
-dis_model_path = '/Users/anuradha/Documents/IIT/5th year/Research/implementation/api/convo-api/src/paraphraser/model/gen.trc'
+gen_model_path = '/Users/anuradha/Desktop/convo-api/src/paraphraser/model/gen.trc'
+dis_model_path = '/Users/anuradha/Desktop/convo-api/src/paraphraser/model/gen.trc'
 
-pretrain_gen_path = '/Users/anuradha/Documents/IIT/5th year/Research/implementation/api/convo-api/src/paraphraser/model/pretrasin/gen.trc'
-pretrain_dis_path = '/Users/anuradha/Documents/IIT/5th year/Research/implementation/api/convo-api/src/paraphraser/model/pretrain/dis.trc'
+pretrain_gen_path = '/Users/anuradha/Desktop/convo-api/src/src/paraphraser/model/pretrasin/gen.trc'
+pretrain_dis_path = '/Users/anuradha/Desktop/convo-api/src/src/paraphraser/model/pretrain/dis.trc'
 
 MAX_SEQ_LEN_PADDING = 5
 BATCH_SIZE = 16

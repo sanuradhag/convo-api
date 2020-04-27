@@ -1,5 +1,4 @@
-import argparse
-
+import re
 import torch
 import nltk
 
@@ -40,8 +39,15 @@ class Paraphraser():
 
         result = self.generator.sample_until_end(cond, max_len=5)
         result_str = self.tensor_to_sent(result)
-
+        result_str = self.remove_special_characters(result_str)
         return result_str
+
+    def remove_special_characters(self, sentence):
+        updated_sentence = re.sub('[^a-zA-Z0-9 \n]', '', sentence)
+        updated_sentence = updated_sentence.strip()
+        return updated_sentence
+
+
 
 
 

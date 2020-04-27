@@ -83,7 +83,7 @@ class InteractionModelGenerator:
         # set invocation name
         self.intraction_model["interactionModel"]["languageModel"]["invocationName"] = self.parsed_json['info']['title'].lower()
         with open('download/interaction-model.json', 'w') as outfile:
-            json.dump(self.intraction_model, outfile)
+            json.dump(self.intraction_model, outfile, indent=4)
         with ZipFile('download/convo.zip', 'w') as convozip:
             convozip.write('download/lambda.py')
             convozip.write('download/interaction-model.json')

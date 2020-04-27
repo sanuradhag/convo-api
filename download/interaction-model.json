@@ -1,0 +1,286 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "swagger petstore",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "updatePet",
+                    "slots": [
+                        {
+                            "name": "id",
+                            "type": "AMAZON.NUMBER"
+                        },
+                        {
+                            "name": "name",
+                            "type": "AMAZON.Ordinal"
+                        },
+                        {
+                            "name": "status",
+                            "type": "AMAZON.Ordinal"
+                        }
+                    ],
+                    "samples": [
+                        "rs60000 canned christopher zapata",
+                        "update an existing darling {id} {name} {status}",
+                        "angelo sqrt sqrt sqrt",
+                        "angelo whereas whereas whereas",
+                        "update an existing pet {id} {name} {status}",
+                        "Update an existing pet",
+                        "update an existing favorite {id} {name} {status}",
+                        "angelo sqrt a sin"
+                    ]
+                },
+                {
+                    "name": "addPet",
+                    "slots": [
+                        {
+                            "name": "id",
+                            "type": "AMAZON.NUMBER"
+                        },
+                        {
+                            "name": "name",
+                            "type": "AMAZON.Ordinal"
+                        },
+                        {
+                            "name": "status",
+                            "type": "AMAZON.Ordinal"
+                        }
+                    ],
+                    "samples": [
+                        "advance c incentive cat",
+                        "advance theodore abundance tsunamis",
+                        "Add a new darling to the shop {id} {name} {status}",
+                        "Add a new pet to the store {id} {name} {status}",
+                        "Add a new pet to the store",
+                        "Add a new favorite to the store {id} {name} {status}",
+                        "Add a new pet to the shop {id} {name} {status}",
+                        "Add a new favorite to the shop {id} {name} {status}",
+                        "Add a new darling to the store {id} {name} {status}",
+                        "a sin a sin",
+                        "advance bends theodore tsunamis"
+                    ]
+                },
+                {
+                    "name": "getPetById",
+                    "slots": [
+                        {
+                            "name": "petId",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "advance whereas affair bhilai",
+                        "find darling by Gem_State {petId}",
+                        "breakthrough favorite by Gem_State {petId}",
+                        "discovery favorite by Idaho {petId}",
+                        "find darling by Idaho {petId}",
+                        "discovery darling by Idaho {petId}",
+                        "Find pet by ID",
+                        "discovery pet by Idaho {petId}",
+                        "organisation forever vinci forever",
+                        "find pet by ID {petId}",
+                        "find favorite by ID {petId}",
+                        "discovery pet by Gem_State {petId}",
+                        "discovery darling by Gem_State {petId}",
+                        "breakthrough pet by Idaho {petId}",
+                        "find favorite by Gem_State {petId}",
+                        "advance yzf tolerated a",
+                        "discovery favorite by Gem_State {petId}",
+                        "find pet by Gem_State {petId}",
+                        "breakthrough favorite by Idaho {petId}",
+                        "breakthrough darling by ID {petId}",
+                        "find pet by Idaho {petId}",
+                        "find favorite by Idaho {petId}",
+                        "discovery pet by ID {petId}",
+                        "find darling by ID {petId}",
+                        "discovery darling by ID {petId}",
+                        "breakthrough favorite by ID {petId}",
+                        "breakthrough darling by Idaho {petId}",
+                        "discovery favorite by ID {petId}",
+                        "breakthrough pet by ID {petId}",
+                        "breakthrough darling by Gem_State {petId}",
+                        "advance canned yzf documention",
+                        "breakthrough pet by Gem_State {petId}"
+                    ]
+                },
+                {
+                    "name": "deletePet",
+                    "slots": [
+                        {
+                            "name": "api_key",
+                            "type": "AMAZON.Ordinal"
+                        },
+                        {
+                            "name": "petId",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "Deletes a favorite {api_key} {petId}",
+                        "Deletes a pet {api_key} {petId}",
+                        "nationwide fake",
+                        "",
+                        "Deletes a pet",
+                        "Deletes a darling {api_key} {petId}",
+                        "",
+                        ""
+                    ]
+                },
+                {
+                    "name": "getOrderById",
+                    "slots": [
+                        {
+                            "name": "orderId",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "breakthrough purchase order_of_magnitude by ID {orderId}",
+                        "breakthrough purchase order_of_magnitude by Gem_State {orderId}",
+                        "find purchase order by Idaho {orderId}",
+                        "c fu nomadic repair",
+                        "breakthrough purchase order by ID {orderId}",
+                        "discovery purchase order by Idaho {orderId}",
+                        "discovery purchase order_of_magnitude by Idaho {orderId}",
+                        "fu wavelengths a sin",
+                        "find purchase order_of_magnitude by Gem_State {orderId}",
+                        "find purchase order_of_magnitude by Idaho {orderId}",
+                        "discovery purchase order by ID {orderId}",
+                        "discovery purchase order_of_magnitude by ID {orderId}",
+                        "breakthrough purchase order by Gem_State {orderId}",
+                        "find purchase order_of_magnitude by ID {orderId}",
+                        "advance whitening yzf operational",
+                        "find purchase order by ID {orderId}",
+                        "breakthrough purchase order_of_magnitude by Idaho {orderId}",
+                        "find purchase order by Gem_State {orderId}",
+                        "discovery purchase order_of_magnitude by Gem_State {orderId}",
+                        "discovery purchase order by Gem_State {orderId}",
+                        "Find purchase order by ID",
+                        "fu homemade fissure bhilai",
+                        "breakthrough purchase order by Idaho {orderId}"
+                    ]
+                },
+                {
+                    "name": "deleteOrder",
+                    "slots": [
+                        {
+                            "name": "orderId",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "erase purchase order by Gem_State {orderId}",
+                        "advance dots troll organisation",
+                        "Delete purchase order by ID",
+                        "fu linksys linksys pigs",
+                        "angelo n agnostic fu",
+                        "delete purchase order by Idaho {orderId}",
+                        "delete purchase order by Gem_State {orderId}",
+                        "cancel purchase order by Gem_State {orderId}",
+                        "delete purchase order_of_magnitude by Idaho {orderId}",
+                        "delete purchase order_of_magnitude by ID {orderId}",
+                        "cancel purchase order_of_magnitude by Idaho {orderId}",
+                        "delete purchase order_of_magnitude by Gem_State {orderId}",
+                        "erase purchase order_of_magnitude by ID {orderId}",
+                        "cancel purchase order by ID {orderId}",
+                        "cancel purchase order by Idaho {orderId}",
+                        "erase purchase order by ID {orderId}",
+                        "erase purchase order_of_magnitude by Idaho {orderId}",
+                        "erase purchase order by Idaho {orderId}",
+                        "erase purchase order_of_magnitude by Gem_State {orderId}",
+                        "delete purchase order by ID {orderId}",
+                        "cancel purchase order_of_magnitude by ID {orderId}",
+                        "theuk atleast facture troll",
+                        "cancel purchase order_of_magnitude by Gem_State {orderId}"
+                    ]
+                },
+                {
+                    "name": "loginUser",
+                    "slots": [
+                        {
+                            "name": "username",
+                            "type": "AMAZON.Ordinal"
+                        },
+                        {
+                            "name": "password",
+                            "type": "AMAZON.Ordinal"
+                        }
+                    ],
+                    "samples": [
+                        "logarithm exploiter into the system {username} {password}",
+                        "log user into the system {username} {password}",
+                        "log user into the scheme {username} {password}",
+                        "a sin a sin",
+                        "logarithm user into the scheme {username} {password}",
+                        "logarithm user into the system {username} {password}",
+                        "logarithm exploiter into the scheme {username} {password}",
+                        "a sin sqrt sqrt",
+                        "polytechnic advising a sin",
+                        "log exploiter into the system {username} {password}",
+                        "log exploiter into the scheme {username} {password}",
+                        "Logs user into the system",
+                        "latex resolved tolerated surf"
+                    ]
+                },
+                {
+                    "name": "getUserByName",
+                    "slots": [
+                        {
+                            "name": "username",
+                            "type": "AMAZON.Ordinal"
+                        }
+                    ],
+                    "samples": [
+                        "acquire exploiter by exploiter name {username}",
+                        "Get user by user name",
+                        "get exploiter by exploiter name {username}",
+                        "fu a sin sqrt",
+                        "a sin sqrt sqrt",
+                        "a sin sqrt sqrt",
+                        "acquire user by user name {username}",
+                        "latex sqrt sqrt sqrt",
+                        "get user by user name {username}"
+                    ]
+                },
+                {
+                    "name": "deleteUser",
+                    "slots": [
+                        {
+                            "name": "username",
+                            "type": "AMAZON.Ordinal"
+                        }
+                    ],
+                    "samples": [
+                        "relegion hearing dots troll",
+                        "erase user {username}",
+                        "erase exploiter {username}",
+                        "gif pappu pappu virus",
+                        "cancel exploiter {username}",
+                        "delete exploiter {username}",
+                        "Delete user",
+                        "a sin organisation epigenetic",
+                        "cancel user {username}",
+                        "a sin sqrt smokes",
+                        "delete user {username}"
+                    ]
+                }
+            ]
+        }
+    }
+}
