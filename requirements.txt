@@ -42,7 +42,7 @@ tensorboard==2.1.1
 tensorflow==2.1.0
 tensorflow-estimator==2.1.0
 termcolor==1.1.0
-urllib3==1.25.8
+urllib3==1.26.5
 wheel==0.34.2
 wrapt==1.12.1
 nltk==3.4.5
