@@ -43,6 +43,6 @@ tensorflow==2.1.0
 tensorflow-estimator==2.1.0
 termcolor==1.1.0
 urllib3==1.25.8
-wheel==0.34.2
+wheel==0.38.1
 wrapt==1.12.1
 nltk==3.4.5
